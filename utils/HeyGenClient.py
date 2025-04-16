@@ -22,9 +22,9 @@ class HeyGenClient:
         
         self.base_url = "https://api.heygen.com"
     
-    def generate_video(self, input_text: str, avatar_id: str = "Daisy-inskirt-20220818", 
-                      voice_id: str = "2d5b0e6cf36f460aa7fc47e3eee4ba54", 
-                      bg_color: str = "#008000",
+    def generate_video(self, input_text: str, avatar_id: str = "05ff47bf08f74d8d9161aae0c003f53b", 
+                      voice_id: str = "0d4d97379a6746baa5dfc692b37774d4", 
+                      bg_color: str = "#000000",
                       width: int = 720, height: int = 1280) -> str:
         """
         Generate a video using the HeyGen API.
@@ -171,7 +171,8 @@ class HeyGenClient:
     
     def generate_and_download_video(self, input_text: str, output_path: str, 
                                    avatar_id: str = "Daisy-inskirt-20220818",
-                                   voice_id: str = "2d5b0e6cf36f460aa7fc47e3eee4ba54") -> str:
+                                   voice_id: str = "2d5b0e6cf36f460aa7fc47e3eee4ba54",
+                                    width: int = 720, height: int = 1280) -> str:
         """
         Complete workflow: generate video, wait for completion, and download it.
         
@@ -185,7 +186,7 @@ class HeyGenClient:
             Path to the downloaded video file
         """
         print(f"Generating video with text: '{input_text}'")
-        video_id = self.generate_video(input_text=input_text, avatar_id=avatar_id, voice_id=voice_id)
+        video_id = self.generate_video(input_text=input_text, avatar_id=avatar_id, voice_id=voice_id, width=width, height=height)
         
         print(f"Video generation started with ID: {video_id}")
         print("Waiting for video to complete...")

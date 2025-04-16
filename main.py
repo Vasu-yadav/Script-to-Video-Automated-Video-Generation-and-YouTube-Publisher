@@ -1,9 +1,31 @@
-from HeyGenClient import HeyGenClient
+from utils.HeyGenClient import HeyGenClient
 import os
+import utils.script as script
+from utils.uploadToYoutube.uploadToYoutube import upload_video
 
 client = HeyGenClient()
 
-client.generate_and_download_video(
-    input_text="Are your luxury goods really what you think? Chinese TikTokers are exposing a hidden truth behind brands like Gucci and Louis Vuitton. As the US-China tariff war escalates, these digital whistleblowers are revealing that many luxury handbags are predominantly made in China. A video by senbags2, with over 10 million views, shows a factory worker claiming they've been the OEM—original equipment manufacturer—for major luxury brands for over 30 years. They allege brands repackage Chinese-made bags, adding logos for huge profits. While luxury brands try to move production elsewhere, TikTokers say they fail due to high costs and lower quality. With Chinese manufacturing wages far below those in the US, these workers are using TikTok to highlight the inequality and demand recognition for their skills. This exposé follows legal scrutiny of brands like Dior and Louis Vuitton for exploitative labor practices in Chinese-run factories.",
-    output_path="output.mp4"
-)
+def main():
+    # Generate a script based on the topic
+    topic = "Debate of GoAT of footbal" #automate this
+    script_content = script.get_script(topic)
+    
+    # Download the generated video
+    client.generate_and_download_video(
+        input_text=script_content,
+        output_path="output.mp4",
+        avatar_id="05ff47bf08f74d8d9161aae0c003f53b",
+        voice_id="0d4d97379a6746baa5dfc692b37774d4",
+        width=720,
+        height=1280
+    )
+    # Upload the video to YouTube
+    upload_video(
+        file_path="output.mp4",
+        title="US China tarrif war", #automate this
+        description="China attacks US Luxury brands by exposing their true manufacturing costs", #automate this
+        tags=["Tarrif", "upload", "api"], #automate this
+        privacy="unlisted"
+    )
+if __name__ == "__main__":
+    main()
