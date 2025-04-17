@@ -1,0 +1,30 @@
+Starting video generation process...
+Current time: 2025-04-17 05:10:37
+Video downloaded successfully to output_ce79c15d-7414-4ff6-901c-2947188db582.mp4
+Traceback (most recent call last):
+  File "/ext_disk/videoGAN/Script_to_video/main.py", line 95, in <module>
+    main()
+  File "/ext_disk/videoGAN/Script_to_video/main.py", line 86, in main
+    upload_video(
+  File "/ext_disk/videoGAN/Script_to_video/utils/uploadToYoutube/uploadToYoutube.py", line 51, in upload_video
+    media = MediaFileUpload(file_path, chunksize=-1, resumable=True, mimetype='video/*')
+  File "/ext_disk/videoGAN/Script_to_video/.venv/lib/python3.10/site-packages/googleapiclient/_helpers.py", line 130, in positional_wrapper
+    return wrapped(*args, **kwargs)
+  File "/ext_disk/videoGAN/Script_to_video/.venv/lib/python3.10/site-packages/googleapiclient/http.py", line 594, in __init__
+    self._fd = open(self._filename, "rb")
+FileNotFoundError: [Errno 2] No such file or directory: 'output_ce79c15d-7414-4ff6-901c-2947188db582.mp4'
+Current time: 2025-04-17 05:12:01
+Starting video generation process...
+Video downloaded successfully to output_e3399b8f-91b4-4411-a7ad-f114c876cb57.mp4
+Traceback (most recent call last):
+  File "/ext_disk/videoGAN/Script_to_video/main.py", line 99, in <module>
+    main()
+  File "/ext_disk/videoGAN/Script_to_video/main.py", line 90, in main
+    upload_video(
+  File "/ext_disk/videoGAN/Script_to_video/utils/uploadToYoutube/uploadToYoutube.py", line 51, in upload_video
+    media = MediaFileUpload(file_path, chunksize=-1, resumable=True, mimetype='video/*')
+  File "/ext_disk/videoGAN/Script_to_video/.venv/lib/python3.10/site-packages/googleapiclient/_helpers.py", line 130, in positional_wrapper
+    return wrapped(*args, **kwargs)
+  File "/ext_disk/videoGAN/Script_to_video/.venv/lib/python3.10/site-packages/googleapiclient/http.py", line 594, in __init__
+    self._fd = open(self._filename, "rb")
+FileNotFoundError: [Errno 2] No such file or directory: 'output_e3399b8f-91b4-4411-a7ad-f114c876cb57.mp4'
