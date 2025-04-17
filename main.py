@@ -62,7 +62,7 @@ client = HeyGenClient()
 
 def main():
     
-    print(f"Current time: {time.strftime('%Y-%m-%d %H:%M:%S')}")
+    print(f"Current UTC time: {time.strftime('%Y-%m-%d %H:%M:%S')}")
     # Generate a script based on the topic
     
     
