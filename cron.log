@@ -28,3 +28,16 @@ Traceback (most recent call last):
   File "/ext_disk/videoGAN/Script_to_video/.venv/lib/python3.10/site-packages/googleapiclient/http.py", line 594, in __init__
     self._fd = open(self._filename, "rb")
 FileNotFoundError: [Errno 2] No such file or directory: 'output_e3399b8f-91b4-4411-a7ad-f114c876cb57.mp4'
+Current UTC time: 2025-04-17 06:32:40
+Output script: Lights, camera, action! Ready to create videos that captivate? First, plan your content: What story do you want to tell? Next, grab your gear—a smartphone works wonders! Ensure good lighting and stable shots. Now, record! Keep clips short and sweet. Editing is key: Trim, add music, and insert text for context. Finally, share your masterpiece! Consistency is crucial—keep creating!
+
+{'Content-Type': 'application/json'}
+f18c5e07-fd42-4d61-b787-e1af516a58d3
+{'status': 'running', 'stdout': '', 'stderr': ''}
+Video is still processing. Retrying in 5 seconds...
+Traceback (most recent call last):
+  File "/ext_disk/videoGAN/Script_to_video/run_musetalk.py", line 31, in <module>
+    musetalk_client.create_video(
+  File "/ext_disk/videoGAN/Script_to_video/utils/Musetalk.py", line 69, in create_video
+    time.sleep(5)
+KeyboardInterrupt

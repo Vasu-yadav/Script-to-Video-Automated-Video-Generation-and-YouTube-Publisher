@@ -5,9 +5,8 @@ from utils.uploadToYoutube.uploadToYoutube import upload_video
 from dotenv import load_dotenv
 import uuid
 import time
-# import utils.system_prompts as system_prompts
-# from google import genai
-
+import json
+import random
 
 load_dotenv()
 # Load environment variables
@@ -15,50 +14,28 @@ GOOGLE_API_KEY = os.getenv("GOOGLE_API_KEY")
 
 client = HeyGenClient()
 
-# def title_generation(topic):
-#     """
-#     Generate a title for the video based on the topic.
+def load_avatars():
+    """
+    Load avatars from the JSON file.
     
-#     Args:
-#         topic (str): The topic to generate a title for.
-        
-#     Returns:
-#         str: The generated title.
-#     """
-#     PROMPT = f"""
-#                 {system_prompts.TITLE_GENERATOR_MSG}
-#                 USER TOPIC: {topic}
-#             """
-#     response = self.client.models.generate_content(
-#         model="gemini-2.0-flash", contents=PROMPT,
-#     )
-#     return f"Video about {topic}"
+    Returns:
+        dict: Dictionary containing avatar information.
+    """
+    with open('utils/HeyGenAvaters.json', 'r') as file:
+        return json.load(file)
 
-# def description_generation(topic):
-#     """
-#     Generate a description for the video based on the topic.
+def get_random_avatar(avatars):
+    """
+    Select a random avatar from the available avatars.
     
-#     Args:
-#         topic (str): The topic to generate a description for.
+    Args:
+        avatars (dict): Dictionary containing avatar information.
         
-#     Returns:
-#         str: The generated description.
-#     """
-#     # Placeholder for description generation logic
-#     return f"This is a video about {topic}"
-
-# def tags_generation(topic):
-#     """
-#     Generate tags for the video based on the topic.
-    
-#     Args:
-#         topic (str): The topic to generate tags for.
-        
-#     Returns:
-#         list: The generated tags.
-#     """
-#     # Placeholder for tags generation logic
-#     return [f"{topic} tag1", f"{topic} tag2"]
+    Returns:
+        tuple: Name of the selected avatar and its data.
+    """
+    avatar_name = random.choice(list(avatars.keys()))
+    return avatar_name, avatars[avatar_name]
 
 def main():
     
@@ -78,18 +55,34 @@ def main():
     unique_id = str(uuid.uuid4())
     output_file = os.path.join(output_folder, f"output_{unique_id}.mp4")
     
+    # Select a random avatar
+    avatars = load_avatars()
+    avatar_name, avatar_data = get_random_avatar(avatars)
+    
+    print(f"Selected avatar: {avatar_name}")
     print("Starting video generation process...")
     
-    # Download the generated video
+    # Download the generated video using the selected avatar
     client.generate_and_download_video(
         input_text=script_content,
         output_path=output_file,
-        avatar_id="05ff47bf08f74d8d9161aae0c003f53b",
-        voice_id="0d4d97379a6746baa5dfc692b37774d4",
+        avatar_id=avatar_data["avater_id"],
+        voice_id=avatar_data["voide_id"],
         width=720,
         height=1280
     )
     print(f"Video downloaded successfully to {output_file}")
+    
+    # Save metadata about the generation
+    metadata_file = os.path.join(output_folder, f"metadata_{unique_id}.json")
+    metadata = {
+        "timestamp": time.strftime('%Y-%m-%d %H:%M:%S'),
+        "topic": topic,
+        "avatar_used": avatar_name,
+        "output_file": output_file
+    }
+    with open(metadata_file, 'w') as f:
+        json.dump(metadata, f, indent=4)
     
     # Upload the video to YouTube
     upload_video(
