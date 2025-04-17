@@ -1,4 +1,4 @@
-import utils.script as script 
+# import utils.script as script 
 from utils.Musetalk import MuseTalk
 import os
 import time
@@ -13,7 +13,9 @@ musetalk_client = MuseTalk(
 
 if __name__ == "__main__":
     topic = "How to make a video"
-    output_script = script.get_script(topic)
+    # output_script = script.get_script(topic)
+    output_script = "The GOAT (Greatest of All Time) of football is a title often debated among fans, with legends like Pelé, Diego Maradona, Cristiano Ronaldo, and Lionel Messi all in the conversation. Lionel Messi is widely regarded as the GOAT due to his incredible skill, vision, consistency, and record-breaking career. With numerous Ballon d'Or awards, Champions League titles, and finally a World Cup win in 2022, Messi’s legacy is unmatched. His balance of goals, assists, and creativity redefined the modern game. While others have made massive impacts, Messi's artistry and longevity at the top make him the ultimate icon in football history."
+
     
     print(f"Current UTC time: {time.strftime('%Y-%m-%d %H:%M:%S')}")
     print("Output script:", output_script)
