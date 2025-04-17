@@ -18,6 +18,21 @@ class MuseTalk:
         self.proxies = proxies or {'http': None, 'https': None}
         self.headers = headers or {"Content-Type": "application/json"}
 
+    def list_speakers(self):
+        """
+        List available speakers from the API.
+
+        Returns:
+            list: A list of speakers if successful, None otherwise.
+        """
+        try:
+            response = requests.get(f"{self.base_url}/speakers", headers=self.headers, proxies=self.proxies)
+            response.raise_for_status()
+            return response.json()
+        except requests.exceptions.RequestException as e:
+            print(f"Request failed: {str(e)}")
+            return None
+        
     def create_video(self, text, video_path, gender):
         """
         Create a video using the API and download it upon success.

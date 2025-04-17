@@ -4,4 +4,4 @@ __pycache__/
 client_secret.json
 token.pickle
 outputs
-cron.log
+*.log

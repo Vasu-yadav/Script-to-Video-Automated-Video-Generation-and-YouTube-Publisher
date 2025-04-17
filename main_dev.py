@@ -2,6 +2,7 @@ from utils.HeyGenClient import HeyGenClient
 import os
 from utils.script_generator.script_generator import ScriptGenerator
 from utils.uploadToYoutube.uploadToYoutube import upload_video
+from utils.video_metadata import VideoMetadata
 from dotenv import load_dotenv
 import uuid
 import time
@@ -15,6 +16,7 @@ GOOGLE_API_KEY = os.getenv("GOOGLE_API_KEY")
 client = HeyGenClient()
 script_generator = ScriptGenerator()
 script_generator.set_debug(True)
+video_metadata = VideoMetadata()
 
 def get_script(topic):
     """
@@ -103,11 +105,14 @@ def main():
         json.dump(metadata, f, indent=4)
     
     # Upload the video to YouTube
+    title = video_metadata.generate_video_title(script_content)
+    description = video_metadata.generate_video_description(script_content)
+    tags = video_metadata.generate_video_tags(script_content)
     upload_video(
         file_path=output_file,
-        title="US China tarrif war",  # automate this
-        description="China attacks US Luxury brands by exposing their true manufacturing costs",  # automate this
-        tags=["Tarrif", "upload", "api"],  # automate this
+        title=title, 
+        description=description,  
+        tags=tags, 
         privacy="unlisted"
     )
 

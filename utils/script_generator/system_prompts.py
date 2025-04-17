@@ -31,10 +31,9 @@ QUERY_GENERATOR_MSG = f"""
             - Respond ONLY with the search query string
             - Do not include explanations or additional text
             - Remove unnecessary words (articles, pronouns, etc.)
-            - Include quotation marks for exact phrases when needed
             - Add relevant synonyms with OR operator when appropriate
             - Focus on specific, factual terms
-            - Do not add quotes on any part of the query or key word
+            - Do not add quotation marks on any part of the query or key word
 
             Examples:
             User: "What's the current price of a Tesla Model 3 in California?"
