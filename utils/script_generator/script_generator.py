@@ -57,6 +57,7 @@ class ScriptGenerator:
         )
 
         content = response.text
+        content = content.replace('"', '')
         self._debug_print(f'QUERY GENERATOR: {content}')
 
         return content
@@ -90,50 +91,50 @@ class ScriptGenerator:
             })
         return results
     
-    def searxng_search(self,query):
+    # def searxng_search(self,query):
 
-        headers = {
-            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)'
-        }
-        # Query the local searxng instance. Adjust parameters as needed.
-        url = 'http://localhost:4000/search'
-        params = {
-        'q': query,
-        'format': 'html'  # Explicitly request HTML format
-        }
-        proxies = {
-            'http': None,
-            'https': None
-        }
+    #     headers = {
+    #         'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)'
+    #     }
+    #     # Query the local searxng instance. Adjust parameters as needed.
+    #     url = 'http://localhost:4000/search'
+    #     params = {
+    #     'q': query,
+    #     'format': 'html'  # Explicitly request HTML format
+    #     }
+    #     proxies = {
+    #         'http': None,
+    #         'https': None
+    #     }
 
-        response = requests.get(url, headers=headers, params=params, proxies=proxies)
-        response.raise_for_status()
+    #     response = requests.get(url, headers=headers, params=params, proxies=proxies)
+    #     response.raise_for_status()
         
-        soup = beautifulsoup.BeautifulSoup(response.text, 'html.parser')
-        results = []
+    #     soup = beautifulsoup.BeautifulSoup(response.text, 'html.parser')
+    #     results = []
         
-        # Use a CSS selector to get all articles with class "result"
-        articles = soup.select('article.result')
-        for i, article in enumerate(articles, start=1):
-            if i > 5:
-                break
-            # Get the URL from the <a> with class "url_header"
-            link_tag = article.find('a', class_='url_header')
-            if not link_tag:
-                continue
-            link = link_tag.get('href', 'No URL found')
+    #     # Use a CSS selector to get all articles with class "result"
+    #     articles = soup.select('article.result')
+    #     for i, article in enumerate(articles, start=1):
+    #         if i > 5:
+    #             break
+    #         # Get the URL from the <a> with class "url_header"
+    #         link_tag = article.find('a', class_='url_header')
+    #         if not link_tag:
+    #             continue
+    #         link = link_tag.get('href', 'No URL found')
             
-            # Get the snippet from the <p> with class "content"
-            snippet_tag = article.find('p', class_='content')
-            snippet = snippet_tag.get_text(strip=True) if snippet_tag else 'No description available'
+    #         # Get the snippet from the <p> with class "content"
+    #         snippet_tag = article.find('p', class_='content')
+    #         snippet = snippet_tag.get_text(strip=True) if snippet_tag else 'No description available'
             
-            results.append({
-                'id': i,
-                'link': link,
-                'search_description': snippet
-            })
+    #         results.append({
+    #             'id': i,
+    #             'link': link,
+    #             'search_description': snippet
+    #         })
         
-        return results
+    #     return results
 
     def best_search_results(self, s_results, query, user_prompt):
         """Determine the most relevant search result"""
@@ -186,7 +187,7 @@ class ScriptGenerator:
         if search_query and search_query[0] == '"' and search_query[-1] == '"':
             search_query = search_query[1:-1]
 
-        search_results = self.searxng_search(search_query)
+        search_results = self.duckduckgo_search(search_query)
         self._debug_print(f"SEARCH RESULTS: {search_results}")
         context_found = False
 

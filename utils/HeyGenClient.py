@@ -140,8 +140,6 @@ class HeyGenClient:
                 error_msg = status_data["data"].get("error", "Unknown error")
                 raise Exception(f"Video generation failed: {error_msg}")
                 
-            if time.time() - start_time > timeout:
-                raise TimeoutError(f"Video generation timed out after {timeout} seconds")
                 
             print(f"Video status: {video_status}. Checking again in {poll_interval} seconds...")
             time.sleep(poll_interval)
