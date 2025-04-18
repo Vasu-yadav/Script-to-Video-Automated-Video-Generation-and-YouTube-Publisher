@@ -52,6 +52,7 @@ if __name__ == "__main__":
     speakers = musetalk_client.list_speakers()
     
     input_speaker = random.choice(speakers)
+    print("Selected speaker:", input_speaker)
     
     unique_id = str(uuid.uuid4())
     output_file = os.path.join(output_folder, f"output_{unique_id}.mp4")
