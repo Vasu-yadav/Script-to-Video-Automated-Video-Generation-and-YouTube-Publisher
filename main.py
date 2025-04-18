@@ -41,7 +41,7 @@ def load_avatars():
     Returns:
         dict: Dictionary containing avatar information.
     """
-    with open('utils/HeyGenAvaters.json', 'r') as file:
+    with open('data/HeyGenAvaters.json', 'r') as file:
         return json.load(file)
 
 def get_random_avatar(avatars):
@@ -64,7 +64,7 @@ def load_topics():
     Returns:
         list: List containing topics.
     """
-    topics_file = 'utils/video_topics.json'
+    topics_file = 'data/video_topics.json'
     if os.path.exists(topics_file):
         with open(topics_file, 'r') as file:
             return json.load(file)
@@ -103,7 +103,7 @@ def remove_used_topic(topic, topics_data):
     if "topics" in topics_data and topic in topics_data["topics"]:
         topics_data["topics"].remove(topic)
         # Save the updated topics list back to the file
-        with open('utils/video_topics.json', 'w') as file:
+        with open('data/video_topics.json', 'w') as file:
             json.dump(topics_data, file, indent=4)
         print(f"Topic '{topic}' has been removed from the topics list.")
     return topics_data

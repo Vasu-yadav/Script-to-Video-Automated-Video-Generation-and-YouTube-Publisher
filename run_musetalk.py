@@ -165,10 +165,10 @@ if __name__ == "__main__":
     title = video_metadata.generate_video_title(script_content)
     description = video_metadata.generate_video_description(script_content)
     tags = video_metadata.generate_video_tags(script_content)
-    upload_video(
-        file_path=output_file,
-        title=title, 
-        description=description,  
-        tags=tags, 
-        privacy="unlisted"
-    )
+    # upload_video(
+    #     file_path=output_file,
+    #     title=title, 
+    #     description=description,  
+    #     tags=tags, 
+    #     privacy="unlisted"
+    # )
