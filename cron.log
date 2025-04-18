@@ -198,3 +198,35 @@ Video ID: yKqTgSPzm8o
 
 
 
+Current UTC time: 2025-04-18 04:30:03
+SEARCH OR NOT: Yes
+
+GENERATING SEARCH QUERY...
+QUERY GENERATOR: goat football debate messi ronaldo pele maradona
+
+SEARCH RESULTS: [{'id': 1, 'link': 'https://www.sportbible.com/football/football-news/diego-maradona-cristiano-ronaldo-lionel-messi-goat-debate-219564-20250202', 'search_description': "Diego Maradona snubbed Cristiano Ronaldo and Lionel Messi when he gave his take on the 'greatest of all time' debate. The late Argentine forward, who is widely regarded as one of all-time greats ..."}, {'id': 2, 'link': 'https://www.sportbible.com/football/football-news/lionel-messi-cristiano-ronaldo-marca-ranked-760827-20250411', 'search_description': 'Messi took top spot in the list, with Ronaldo second, Pele was third but it was not Maradona in fourth. Instead, the Spanish publication opted for former Real Madrid forward Alfredo Di Stefano ...'}, {'id': 3, 'link': 'https://www.hindustantimes.com/sports/football/you-may-prefer-pele-lionel-messi-maradona-cristiano-ronaldo-goat-debate-calls-himself-most-complete-player-ever-101738665633690.html', 'search_description': 'Cristiano Ronaldo ended the long-standing debate on who is the greatest player of all time. The Portuguese put himself ahead of eternal rival Lionel Messi, 1986 World Cup winner Diego Maradona ...'}, {'id': 4, 'link': 'https://www.pulsesports.ng/football/story/argentina-coach-snubs-lionel-messi-maradona-settles-goat-debate-2023120808551673973', 'search_description': "The GOAT debate continues and Lionel Messi's countryman has surprisingly snubbed the World Cup winner with his pick. ... The Defensores Unido manager insists Brazilian legend Pele should be regarded as the greatest footballer of all time. Messi, Maradona, and Ronaldo have been in the GOAT conversation for decades, thanks to their overwhelming ..."}, {'id': 5, 'link': 'https://yen.com.gh/sports/football/279401-diego-maradona-snubbed-cristiano-ronaldo-lionel-messi-goat-debate/', 'search_description': 'Haaland, other stars pick Ronaldo as GOAT. Earlier, YEN.com.gh reported that several players shared their opinions on the ongoing GOAT debate between Cristiano Ronaldo and Lionel Messi in the UEFA Champions League. The two legendary figures have long dominated the competition with remarkable goals and decisive performances.'}]
+BEST SEARCH RESULT: 2
+
+CONTAINS DATA NEEDED: True
+
+Response: "Hold on, the GOAT debate just got a whole lot more interesting! Cristiano Ronaldo has declared himself the 'most complete player ever', putting himself ahead of legends like Messi, Pele, and Maradona. With five Ballon d’Or awards and a record-breaking 919 goals in his career, Ronaldo isn't shy about his self-assessment. He boasts about his prowess with headers, set pieces, both feet, speed and strength. While acknowledging that taste is subjective, Ronaldo firmly believes his all-around game makes him the greatest. What do you think? Is Ronaldo's self-proclamation justified? Let us know in the comments!"
+
+Selected avatar: Georgia
+Starting video generation process...
+Generating video with text: '"Hold on, the GOAT debate just got a whole lot more interesting! Cristiano Ronaldo has declared himself the 'most complete player ever', putting himself ahead of legends like Messi, Pele, and Maradona. With five Ballon d’Or awards and a record-breaking 919 goals in his career, Ronaldo isn't shy about his self-assessment. He boasts about his prowess with headers, set pieces, both feet, speed and strength. While acknowledging that taste is subjective, Ronaldo firmly believes his all-around game makes him the greatest. What do you think? Is Ronaldo's self-proclamation justified? Let us know in the comments!"
+'
+Traceback (most recent call last):
+  File "/ext_disk/videoGAN/Script_to_video/main.py", line 120, in <module>
+    main()
+  File "/ext_disk/videoGAN/Script_to_video/main.py", line 86, in main
+    client.generate_and_download_video(
+  File "/ext_disk/videoGAN/Script_to_video/utils/HeyGenClient.py", line 187, in generate_and_download_video
+    video_id = self.generate_video(input_text=input_text, avatar_id=avatar_id, voice_id=voice_id, width=width, height=height)
+  File "/ext_disk/videoGAN/Script_to_video/utils/HeyGenClient.py", line 78, in generate_video
+    raise Exception(f"Error generating video: {response.text}")
+Exception: Error generating video: {"data":null,"error":{"code":"avatar_not_found","message":"Avatar AGeorgia_sitting_office_side not found or no longer available."}}
+
+
+
+
+

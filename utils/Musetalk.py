@@ -33,7 +33,7 @@ class MuseTalk:
             print(f"Request failed: {str(e)}")
             return None
         
-    def create_video(self, text, video_path, gender):
+    def create_video(self, text, video_path,input_video_id, gender):
         """
         Create a video using the API and download it upon success.
 
@@ -51,7 +51,7 @@ class MuseTalk:
         payload = {
             "text": text,
             "gender": gender,
-            "video_path": 'f1bbee75-460c-45e5-b42d-f1394da66fb9.mp4'
+            "video_path": input_video_id
         }
         
         try:
