@@ -7,7 +7,7 @@ import uuid
 import random
 import json
 from utils.video_metadata import VideoMetadata
-
+import argparse
 
 script_generator = ScriptGenerator()
 # Initialize the MuseTalk client
@@ -86,8 +86,11 @@ def remove_used_topic(topic, topics_data):
     return topics_data
 
 if __name__ == "__main__":
-    # topic = "How to make a video"
-    # output_script = script.get_script(topic)
+    # Parse command-line arguments
+    parser = argparse.ArgumentParser(description="Generate and optionally upload a video.")
+    parser.add_argument("--upload", action="store_true", help="Upload the generated video to YouTube.")
+    args = parser.parse_args()
+
     # Load topics data
     topics_data = load_topics()
     
@@ -119,7 +122,6 @@ if __name__ == "__main__":
             print(f"Successfully generated script for topic: '{topic}'")
             # remove_used_topic(topic, topics_data)
         
-    
     # If all attempts failed, exit the program
     if script_content is None or script_content == "Could not generate a response for your query.":
         print("Failed to generate a script after multiple attempts. Exiting program.")
@@ -146,11 +148,9 @@ if __name__ == "__main__":
     musetalk_client.create_video(
         text=script_content,
         video_path=output_file,
-        input_video_id = input_speaker['video_id'],
-        gender=input_speaker['gender']
+        input_video_id = 'sample9.mp4',
+        gender='Female'
     )
-    
-    
     
     metadata_file = os.path.join(output_folder, f"metadata_{unique_id}.json")
     metadata = {
@@ -161,14 +161,18 @@ if __name__ == "__main__":
     with open(metadata_file, 'w') as f:
         json.dump(metadata, f, indent=4)
     
-    # Upload the video to YouTube
-    title = video_metadata.generate_video_title(script_content)
-    description = video_metadata.generate_video_description(script_content)
-    tags = video_metadata.generate_video_tags(script_content)
-    # upload_video(
-    #     file_path=output_file,
-    #     title=title, 
-    #     description=description,  
-    #     tags=tags, 
-    #     privacy="unlisted"
-    # )
+    # Upload the video to YouTube if --upload is provided
+    if args.upload:
+        title = video_metadata.generate_video_title(script_content)
+        description = video_metadata.generate_video_description(script_content)
+        tags = video_metadata.generate_video_tags(script_content)
+        upload_video(
+            file_path=output_file,
+            title=title, 
+            description=description,  
+            tags=tags, 
+            privacy="unlisted"
+        )
+        print("Video uploaded to YouTube.")
+    else:
+        print("Skipping video upload as --upload flag was not provided.")

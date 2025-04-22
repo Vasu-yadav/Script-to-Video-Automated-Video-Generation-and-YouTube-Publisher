@@ -76,7 +76,7 @@ class MuseTalk:
                 if status_data.get("status") == "success":
                     # Step 3: Download the video
                     return self.download_video(job_id, video_path)
-                elif status_data.get("status") == "failed":
+                elif status_data.get("status") == "failed" or status_data.get("status") == "error":
                     print("Video creation failed.")
                     return False
 
