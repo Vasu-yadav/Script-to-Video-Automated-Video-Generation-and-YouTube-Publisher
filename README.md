@@ -130,5 +130,5 @@ Each avatar in `HeyGenAvatars.json` requires:
 
 ## 🙏 Acknowledgments
 
-- HeyGen for video avatar generation
-- Google Gemini for AI text generation
+- [HeyGen](https://www.heygen.com/) for video avatar generation
+- [Google Gemini](https://ai.google.dev) for AI text generation
