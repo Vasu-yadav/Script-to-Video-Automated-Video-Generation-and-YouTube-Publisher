@@ -31,8 +31,8 @@ Script-to-Video automates the entire pipeline from topic research to YouTube pub
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/yourusername/Script-to-Video.git
-cd Script-to-Video
+git clone https://github.com/Vasu-yadav/Script-to-Video-Automated-Video-Generation-and-YouTube-Publisher.git
+cd Script-to-Video-Automated-Video-Generation-and-YouTube-Publisher
 ```
 
 2. Install dependencies:
@@ -123,14 +123,6 @@ Each avatar in `HeyGenAvatars.json` requires:
 - `name`: Friendly name for the avatar
 - `avater_id`: HeyGen avatar ID
 - `voide_id`: HeyGen voice ID
-
-### Environment Variables
-- `GOOGLE_API_KEY`: Google API key for Gemini AI
-- `HEYGEN_API_KEY`: HeyGen API key
-
-## 📝 License
-
-[Your chosen license]
 
 ## 👥 Contributors
 [Vasu Yadav](https://github.com/Vasu-yadav)  
